@@ -1,68 +1,88 @@
 # Smart EV Charging Station Reservation System
 
-A web-based system developed to manage electric vehicle charging station reservations.
+A PHP and MariaDB web application for managing electric vehicle charging stations, reservations and charging sessions.
 
 ## Project overview
 
-This system allows users to view charging stations, make reservations and monitor their booking details. Administrators can manage stations, users and reservations through an administrative interface.
+The system allows electric vehicle users to register vehicles, select charging stations and reserve charging slots based on their battery requirements. The estimated charging energy, duration and cost are calculated automatically.
+
+Administrators can manage users, vehicles, charging stations, charger types, charging slots, reservations, charging sessions and payments.
 
 ## Main features
 
 * User registration and login
-* EV charging station management
-* Charging-station reservation
+* Vehicle registration with battery capacity
+* Multiple charging stations and charging slots
+* Charger types with connector type, power output and charging rate
+* Automatic charging-energy calculation
 * Automatic charging-duration calculation
-* User dashboard with reservation ticket
+* Estimated charging-cost calculation
+* Reservation conflict detection
+* Reservation cancellation
+* Check-in and charging-session management
+* Charging-session completion and energy recording
+* Payment recording
+* Reservation audit logs
+* User charging-history view
 * Administrator dashboard
-* Reservation and user management
-* Database-backed record storage
+* Monthly revenue reporting
 
 ## Technologies used
 
-* PHP
-* MySQL / MariaDB
+* PHP 8.2.12
+* MySQL / MariaDB 10.4.32
 * HTML
 * CSS
 * JavaScript
 * XAMPP
 * Apache
 
-## User role
+## Database design
 
-Users can:
+The database is named `ev_charging_system`.
 
-* Register and log in
-* View available charging stations
-* Select charging requirements
-* Make charging reservations
-* View reservation details through the dashboard
+It contains:
 
-## Administrator role
+* 9 relational tables
+* 4 database views
+* 7 stored procedures
+* 2 triggers
+* Primary keys, foreign keys and unique constraints
+* Transaction handling for important reservation and charging operations
 
-Administrators can:
+The main relationships are:
 
-* Manage charging stations
-* View and manage users
-* Review reservations
-* Update station and reservation information
-
-## Installation
-
-1. Install XAMPP.
-2. Copy the project folder into the `htdocs` directory.
-3. Start Apache and MySQL from XAMPP.
-4. Create a MySQL or MariaDB database.
-5. Import the SQL file from the `database` folder.
-6. Update the database connection settings.
-7. Open the project through `http://localhost/`.
+* Users can register multiple vehicles.
+* Charging stations contain multiple charging slots.
+* Each charging slot uses one charger type.
+* Users reserve charging slots for their vehicles.
+* A reservation can create one charging session.
+* A completed charging session can have one payment.
+* Reservation status changes are recorded in the audit log.
 
 ## My contribution
 
 * Designed and developed the PHP application.
-* Created the database structure and reservation workflow.
-* Developed user and administrator interfaces.
-* Implemented reservation-duration calculation.
-* Tested the main user and administrator functions.
+* Designed the MariaDB database structure.
+* Implemented user and administrator workflows.
+* Implemented charging-duration and cost calculations.
+* Added reservation conflict validation.
+* Added stored procedures, triggers and database views.
+* Tested reservation, charging-session and payment workflows.
+
+## Installation
+
+1. Install XAMPP.
+2. Copy the project folder into the XAMPP `htdocs` directory.
+3. Start Apache and MySQL.
+4. Create a database named `ev_charging_system`.
+5. Import `database/ev_charging_system.sql` using phpMyAdmin.
+6. Update the database connection settings in the project configuration file.
+7. Open the application through `http://localhost/`.
+
+## Project screenshots
+
+Screenshots of the login page, user dashboard, reservation page, charging stations and administrator dashboard will be added here.
 
 ## Project status
 
