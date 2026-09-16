@@ -82,7 +82,23 @@ The main relationships are:
 
 ## Project screenshots
 
-Screenshots of the login page, user dashboard, reservation page, charging stations and administrator dashboard will be added here.
+### Login page
+![Login page](screenshots/login.png)
+
+### User dashboard
+![User dashboard](screenshots/user-dashboard.png)
+
+### Charging stations
+![Charging stations](screenshots/charging-stations.png)
+
+### Reservation page
+![Reservation page](screenshots/reservation.png)
+
+### Administrator dashboard
+![Administrator dashboard](screenshots/admin-dashboard.png)
+
+### Payment page
+![Payment page](screenshots/payment.png)
 
 ## Project status
 
