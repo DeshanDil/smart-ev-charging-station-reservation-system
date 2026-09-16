@@ -1,0 +1,1026 @@
+/* =========================================================
+   Smart EV Charging System - Modern UI Theme
+   Replace full public/style.css with this
+========================================================= */
+
+:root {
+    --bg-main: #07111f;
+    --bg-secondary: #0b1728;
+    --bg-card: rgba(15, 28, 48, 0.92);
+    --bg-card-soft: rgba(20, 39, 66, 0.82);
+
+    --primary: #00d9ff;
+    --primary-dark: #009ec3;
+    --primary-soft: rgba(0, 217, 255, 0.14);
+
+    --accent: #2dfc8c;
+    --accent-dark: #13bd65;
+    --accent-soft: rgba(45, 252, 140, 0.13);
+
+    --warning: #ffcc66;
+    --danger: #ff5c7a;
+    --danger-soft: rgba(255, 92, 122, 0.15);
+
+    --text-main: #edf7ff;
+    --text-muted: #9fb5c9;
+    --border: rgba(255, 255, 255, 0.09);
+
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+
+    --shadow-card: 0 18px 45px rgba(0, 0, 0, 0.32);
+    --shadow-glow: 0 0 30px rgba(0, 217, 255, 0.13);
+
+    --transition: 0.22s ease;
+}
+
+/* =========================================================
+   Base
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background:
+        radial-gradient(circle at top left, rgba(0, 217, 255, 0.16), transparent 34%),
+        radial-gradient(circle at top right, rgba(45, 252, 140, 0.11), transparent 32%),
+        linear-gradient(135deg, #050b14 0%, #07111f 48%, #08192a 100%);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: linear-gradient(to bottom, black, transparent 90%);
+    z-index: -1;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+small {
+    color: var(--text-muted);
+}
+
+h1, h2, h3 {
+    margin-top: 0;
+    line-height: 1.22;
+}
+
+h1 {
+    font-size: clamp(2rem, 4vw, 3.1rem);
+    letter-spacing: -1px;
+}
+
+h2 {
+    margin-top: 34px;
+    margin-bottom: 16px;
+    font-size: 1.38rem;
+    color: #ffffff;
+}
+
+h2::after {
+    content: "";
+    display: block;
+    width: 64px;
+    height: 3px;
+    margin-top: 8px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+
+h3 {
+    color: #ffffff;
+}
+
+/* =========================================================
+   Layout
+========================================================= */
+
+.container {
+    width: min(96%, 1480px);
+    margin: 28px auto;
+    padding: clamp(18px, 3vw, 34px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background:
+        linear-gradient(180deg, rgba(10, 22, 38, 0.94), rgba(8, 17, 31, 0.94));
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(18px);
+    animation: pageEnter 0.45s ease both;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dashboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: var(--radius-lg);
+    background:
+        linear-gradient(135deg, rgba(0, 217, 255, 0.12), rgba(45, 252, 140, 0.06)),
+        rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+}
+
+.dashboard-header p {
+    margin-bottom: 0;
+    color: var(--text-muted);
+}
+
+.profile-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: max-content;
+    padding: 11px 16px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--primary-soft), var(--accent-soft));
+    border: 1px solid rgba(0, 217, 255, 0.22);
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: var(--shadow-glow);
+}
+
+/* =========================================================
+   Navigation
+========================================================= */
+
+.nav {
+    position: sticky;
+    top: 12px;
+    z-index: 20;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin: 18px 0 26px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: rgba(5, 13, 25, 0.78);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.26);
+}
+
+.nav a,
+.nav button,
+.nav span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 10px 15px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.045);
+    color: var(--text-main);
+    font-size: 0.93rem;
+    font-weight: 650;
+    line-height: 1;
+}
+
+.nav a:hover,
+.nav button:hover {
+    transform: translateY(-2px);
+    border-color: rgba(0, 217, 255, 0.38);
+    background: var(--primary-soft);
+    color: #ffffff;
+}
+
+.nav a.active {
+    color: #03101a;
+    border-color: transparent;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    box-shadow: 0 8px 22px rgba(0, 217, 255, 0.24);
+}
+
+.nav a[href*="logout"] {
+    margin-left: auto;
+    color: #ffffff;
+    background: rgba(255, 92, 122, 0.14);
+    border-color: rgba(255, 92, 122, 0.28);
+}
+
+.nav a[href*="logout"]:hover {
+    background: rgba(255, 92, 122, 0.24);
+    border-color: rgba(255, 92, 122, 0.45);
+}
+
+/* =========================================================
+   Hero / Recommendation
+========================================================= */
+
+.hero,
+.recommend-box {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(18px, 3vw, 28px);
+    border-radius: var(--radius-lg);
+    background:
+        linear-gradient(135deg, rgba(0, 217, 255, 0.11), rgba(45, 252, 140, 0.08)),
+        rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(0, 217, 255, 0.16);
+    box-shadow: var(--shadow-glow);
+}
+
+.hero::before,
+.recommend-box::before {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    right: -80px;
+    top: -90px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 217, 255, 0.22), transparent 62%);
+}
+
+.recommend-box h3 {
+    margin-bottom: 10px;
+}
+
+.recommend-box p {
+    color: var(--text-muted);
+}
+
+/* =========================================================
+   Cards
+========================================================= */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+    gap: 16px;
+    margin: 18px 0;
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+    border-radius: var(--radius-lg);
+    background:
+        linear-gradient(180deg, var(--bg-card), rgba(11, 25, 43, 0.88));
+    border: 1px solid var(--border);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
+    transition: var(--transition);
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.08), transparent 45%);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 217, 255, 0.25);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.34);
+}
+
+.card:hover::after {
+    opacity: 1;
+}
+
+.card h3 {
+    margin-bottom: 8px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card p {
+    margin: 0;
+    font-size: clamp(1.35rem, 2.4vw, 2.1rem);
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.card small {
+    display: block;
+    margin-top: 8px;
+}
+
+/* =========================================================
+   Forms
+========================================================= */
+
+form {
+    margin: 18px 0;
+    padding: 20px;
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid var(--border);
+}
+
+label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--text-muted);
+    font-weight: 700;
+    font-size: 0.92rem;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    min-height: 46px;
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(3, 10, 20, 0.76);
+    color: #ffffff;
+    outline: none;
+    transition: var(--transition);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #71869a;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: rgba(0, 217, 255, 0.65);
+    box-shadow: 0 0 0 4px rgba(0, 217, 255, 0.12);
+}
+
+input[readonly] {
+    opacity: 0.9;
+    cursor: not-allowed;
+    background: rgba(255, 255, 255, 0.055);
+}
+
+button,
+input[type="submit"] {
+    width: auto;
+    min-height: 44px;
+    padding: 11px 18px;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #03101a;
+    font-weight: 800;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 12px 26px rgba(0, 217, 255, 0.18);
+}
+
+button:hover,
+input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 34px rgba(0, 217, 255, 0.26);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Small action forms inside tables */
+td form {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: transparent;
+}
+
+td input,
+td select {
+    min-height: 38px;
+    margin-bottom: 8px;
+    padding: 9px 10px;
+}
+
+td button {
+    min-height: 36px;
+    padding: 8px 13px;
+    font-size: 0.86rem;
+}
+
+/* =========================================================
+   Tables
+========================================================= */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin: 18px 0 28px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.025);
+}
+
+table {
+    width: 100%;
+    min-width: 950px;
+    border-collapse: collapse;
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: 14px 14px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.075);
+}
+
+th {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background: rgba(0, 217, 255, 0.1);
+    color: #dff9ff;
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+td {
+    color: #e6f2ff;
+}
+
+tr {
+    transition: var(--transition);
+}
+
+tr:hover td {
+    background: rgba(0, 217, 255, 0.045);
+}
+
+td a {
+    display: inline-flex;
+    margin: 2px 0;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: var(--primary-soft);
+    border: 1px solid rgba(0, 217, 255, 0.16);
+    font-weight: 700;
+}
+
+/* =========================================================
+   Badges / Alerts
+========================================================= */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 26px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    line-height: 1;
+    border: 1px solid transparent;
+}
+
+.badge-available,
+.badge-paid {
+    color: #052015;
+    background: linear-gradient(135deg, var(--accent), #a3ffce);
+}
+
+.badge-pending {
+    color: #2a1b00;
+    background: linear-gradient(135deg, var(--warning), #ffe4a3);
+}
+
+.badge-reserved {
+    color: #03101a;
+    background: linear-gradient(135deg, var(--primary), #9aecff);
+}
+
+.badge-charging {
+    color: #061728;
+    background: linear-gradient(135deg, #65a8ff, #87f7ff);
+}
+
+.badge-out {
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--danger), #ff8da0);
+}
+
+.success,
+.error {
+    padding: 14px 16px;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    margin: 16px 0;
+}
+
+.success {
+    color: #bfffdc;
+    background: var(--accent-soft);
+    border: 1px solid rgba(45, 252, 140, 0.28);
+}
+
+.error {
+    color: #ffd0d9;
+    background: var(--danger-soft);
+    border: 1px solid rgba(255, 92, 122, 0.30);
+}
+
+/* =========================================================
+   Search / Utility
+========================================================= */
+
+#stationSearch,
+input[type="search"] {
+    max-width: 520px;
+}
+
+.loader {
+    width: 42px;
+    height: 42px;
+    border: 4px solid rgba(255, 255, 255, 0.12);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 217, 255, 0.35);
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(45, 252, 140, 0.45);
+}
+
+/* =========================================================
+   Login/Register Friendly Layout
+========================================================= */
+
+body:has(form) .container {
+    position: relative;
+}
+
+.login-box,
+.auth-box {
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+/* =========================================================
+   Responsive
+========================================================= */
+
+@media (max-width: 900px) {
+    .container {
+        width: 94%;
+        margin: 16px auto;
+        padding: 18px;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile-pill {
+        width: 100%;
+    }
+
+    .nav {
+        position: relative;
+        top: 0;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+
+    .nav a,
+    .nav button,
+    .nav span {
+        min-width: max-content;
+    }
+
+    .nav a[href*="logout"] {
+        margin-left: 0;
+    }
+
+    table {
+        min-width: 850px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 560px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    form {
+        padding: 16px;
+    }
+
+    button,
+    input[type="submit"] {
+        width: 100%;
+    }
+
+    td a {
+        width: max-content;
+    }
+}
+
+/* =========================================================
+   Print Support
+========================================================= */
+
+@media print {
+    body {
+        background: #ffffff !important;
+        color: #000000 !important;
+    }
+
+    body::before,
+    .nav,
+    button,
+    .print-btn {
+        display: none !important;
+    }
+
+    .container,
+    .card,
+    .recommend-box,
+    .table-wrapper,
+    table {
+        background: #ffffff !important;
+        color: #000000 !important;
+        border: 1px solid #dddddd !important;
+        box-shadow: none !important;
+    }
+
+    h1, h2, h3, p, small, th, td {
+        color: #000000 !important;
+    }
+
+    th {
+        background: #eeeeee !important;
+    }
+
+    table {
+        min-width: 0;
+    }
+}
+
+/* =========================================================
+   Modern Auth Pages - Login / Register
+========================================================= */
+
+.auth-body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 16px;
+}
+
+.auth-container {
+    width: min(94%, 460px);
+}
+
+.auth-card {
+    padding: 34px;
+    border-radius: 28px;
+    background:
+        linear-gradient(180deg, rgba(10, 22, 38, 0.96), rgba(8, 17, 31, 0.96));
+    border: 1px solid rgba(0, 217, 255, 0.18);
+    box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.42),
+        0 0 35px rgba(0, 217, 255, 0.12);
+    backdrop-filter: blur(18px);
+}
+
+.auth-brand {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.auth-logo {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 14px;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #03101a;
+    font-size: 34px;
+    font-weight: 900;
+    box-shadow: 0 16px 32px rgba(0, 217, 255, 0.25);
+}
+
+.auth-brand h1 {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.auth-brand p {
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.auth-card form {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+.auth-card input,
+.auth-card select {
+    min-height: 50px;
+}
+
+.auth-card button {
+    width: 100%;
+    margin-top: 6px;
+}
+
+.auth-footer {
+    margin-top: 22px;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.auth-footer a {
+    font-weight: 800;
+}
+
+.auth-demo {
+    margin-top: 18px;
+    padding: 14px;
+    border-radius: 16px;
+    background: rgba(0, 217, 255, 0.08);
+    border: 1px solid rgba(0, 217, 255, 0.14);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 520px) {
+    .auth-card {
+        padding: 24px;
+    }
+}
+
+/* =========================================================
+   Hero Action Buttons
+========================================================= */
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.hero-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: 0.22s ease;
+}
+
+.hero-actions a:first-child {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #03101a;
+    box-shadow: 0 12px 26px rgba(0, 217, 255, 0.22);
+}
+
+.hero-actions a:first-child:hover {
+    transform: translateY(-2px);
+    color: #03101a;
+    box-shadow: 0 18px 34px rgba(0, 217, 255, 0.32);
+}
+
+.hero-actions a:last-child {
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+    border: 1px solid rgba(0, 217, 255, 0.24);
+}
+
+.hero-actions a:last-child:hover {
+    transform: translateY(-2px);
+    background: rgba(0, 217, 255, 0.14);
+    color: #ffffff;
+}
+
+/* =========================================================
+   Dashboard Simplification + Click Fix
+========================================================= */
+
+.card::after {
+    pointer-events: none;
+}
+
+.card > * {
+    position: relative;
+    z-index: 2;
+}
+
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin: 18px 0 28px;
+}
+
+.action-card {
+    padding: 18px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: 0.22s ease;
+}
+
+.action-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(0, 217, 255, 0.28);
+}
+
+.action-card h3 {
+    margin-bottom: 6px;
+}
+
+.action-card p {
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #03101a !important;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.action-btn.secondary {
+    background: rgba(255, 255, 255, 0.07);
+    color: #ffffff !important;
+    border: 1px solid rgba(0, 217, 255, 0.22);
+}
+
+.simple-section {
+    margin-top: 28px;
+}
+
+.simple-table table {
+    min-width: 700px;
+}
+
+.dashboard-note {
+    color: var(--text-muted);
+    margin-top: -8px;
+    margin-bottom: 16px;
+}
+
+/* =========================================================
+   Consistent App Layout Fix
+========================================================= */
+
+.container {
+    max-width: 1320px;
+    min-height: calc(100vh - 56px);
+}
+
+.dashboard-header {
+    min-height: 150px;
+    align-items: center;
+}
+
+.dashboard-header h1 {
+    margin-bottom: 10px;
+}
+
+.dashboard-header p {
+    max-width: 850px;
+}
+
+.nav {
+    margin-top: 18px;
+    margin-bottom: 30px;
+}
+
+.nav a.active {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #03101a !important;
+    border-color: transparent;
+}
+
+.page-content {
+    animation: pageEnter 0.35s ease both;
+}
+
+.page-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 12px 0 22px;
+}
+
+.page-actions a,
+.page-actions button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-weight: 800;
+}
+
+.compact-form {
+    max-width: 720px;
+}
+
+.wide-form {
+    max-width: 100%;
+}
+
+.section-card {
+    padding: 22px;
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid var(--border);
+    margin-bottom: 24px;
+}
